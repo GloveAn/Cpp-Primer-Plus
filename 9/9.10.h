@@ -8,7 +8,7 @@ namespace pers
     };
 
     void getPerson(Person &);
-    void showPerson(Person &);
+    void showPerson(const Person &);
 }
 
 namespace debts
@@ -21,6 +21,6 @@ namespace debts
     };
 
     void getDebt(Debt &);
-    void showDebt(Debt &);
-    double sumDebts(const Debt ar[], int n); 
+    void showDebt(const Debt &);
+    double sumDebts(const Debt ar[], int n);
 }
