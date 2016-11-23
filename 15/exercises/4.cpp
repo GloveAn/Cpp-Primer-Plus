@@ -1,4 +1,5 @@
 #include <iostream>
+#include <typeinfo>
 #include "../15.14.h"
 
 int main()
@@ -45,19 +46,14 @@ int main()
     }
     catch(Sales::bad_index & bad)
     {
-        LabeledSales::nbad_index *nbad =
-            static_cast<LabeledSales::nbad_index *>(&bad);
-        if(nbad == 0)
+        cout << bad.what();
+        if(typeid(bad) == typeid(LabeledSales::nbad_index &))
         {
-            cout << nbad->what();
-            cout << "Company: " << nbad->label_val() << endl;
-            cout << "bad index: " << nbad->bi_val() << endl;
+            cout << "Company: ";
+            cout << (static_cast<LabeledSales::nbad_index &>(bad)).label_val();
+            cout << endl;
         }
-        else
-        {
-            cout << bad.what();
-            cout << "bad index: " << bad.bi_val() << endl;
-        }
+        cout << "bad index: " << bad.bi_val() << endl;
     }
 
     cout << "\nNext try block:\n";
@@ -69,19 +65,14 @@ int main()
     }
     catch(Sales::bad_index & bad)
     {
-        LabeledSales::nbad_index *nbad =
-            static_cast<LabeledSales::nbad_index *>(&bad);
-        if(nbad == 0)
+        cout << bad.what();
+        if(typeid(bad) == typeid(LabeledSales::nbad_index &))
         {
-            cout << nbad->what();
-            cout << "Company: " << nbad->label_val() << endl;
-            cout << "bad index: " << nbad->bi_val() << endl;
+            cout << "Company: ";
+            cout << (static_cast<LabeledSales::nbad_index &>(bad)).label_val();
+            cout << endl;
         }
-        else
-        {
-            cout << bad.what();
-            cout << "bad index: " << bad.bi_val() << endl;
-        }
+        cout << "bad index: " << bad.bi_val() << endl;
     }
 
     cout << "done\n";
